@@ -8,7 +8,7 @@ For anybody who wants a basic express application template, here you go. The bui
 1.  **git clone** https://github.com/ryanp102694/express-template.git
 1.  **cd** express-template
 1.  **npm install**
-1.  **npm start**
+1.  **gulp**
 1.  *Browse to localhost:8080*
 
 Note, if you make changes in the src/ folder, the project will reload (if it is already running). You still need to manually refresh the brower though. **I suggest Visual Studio Code, a free lightweight editor.**
