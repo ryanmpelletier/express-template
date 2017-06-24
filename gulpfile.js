@@ -1,3 +1,9 @@
+/**
+ * A gulpfile is what the "gulp" command looks at in order to build the project. Gulp has lots of "tasks"
+ * which each do something, and in some cases depend on other tasks being complete. 
+ * 
+ * A special task is used in this file to watch for source code changes, and rebuild the server on a save.  
+ */
 
 var gulp = require('gulp');
 var babel = require('gulp-babel');
@@ -49,6 +55,10 @@ gulp.task('build-server', ['build-client'], function () {
 /**
  * Uses nodemon plugin to start server
  * script tells it where the node file is to run
+ * 
+ * Although it is not explicitely stated, nodemon is watching the directory where the server code is for changes
+ * and will restart the server once it finds new changes. 
+ * (So gulp watches the source code changes, and nodemon is watching for new builds to know when to restart the server)
  * 
  * NOTE: you can type rs and hit <enter> in the console at any time to restart the server
  */
