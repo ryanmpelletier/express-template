@@ -4,7 +4,7 @@
   "description": "A template express application.",
   "main": "app.js",
   "scripts": {
-    "start": "webpack --config webpack.config.js"
+    "start": "gulp"
   },
   "author": "Ryan Pelletier",
   "license": "MIT",
