@@ -36,7 +36,8 @@ gulp.task('build-client', ['move-client'], function(){
 });
 
 /**
- * JGrabs all the files in /src/server and puts them in /bin/server after running babel on them
+ * Grabs all the files in /src/server and puts them in /bin/server after running babel on them,
+ * this depends on the client already being built, so 'build-client' is run first
  */
 gulp.task('build-server', ['build-client'], function () {
   return gulp.src(['src/server/**/*.*', 'src/server/**/*.js'])
@@ -53,15 +54,24 @@ gulp.task('build-server', ['build-client'], function () {
  */
 gulp.task('run', ['build-server'], function () {
     nodemon({
-        delay: 10,
+        delay: 1000,
         script: './bin/server/server.js',
     })
-    .on('restart', function () {
-        console.log('server restarted!');
+    .on('restart',function(){
+        console.log("restarted");
     });
 });
 
 /**
- * Default gulp task, if just 'gulp' is run in the project root directory, this task will run
+ * Any time a source file is changed, run the 'build-server' task
  */
-gulp.task('default', ['run']);
+gulp.task('watch', function() {
+    gulp.watch('src/**/*',['build-server']);
+});
+
+
+/**
+ * Default gulp task, if just 'gulp' is run in the project root directory, this task will run.
+ * Watch is also called to watch for source code changes, and call build-server when necessary
+ */
+gulp.task('default', ['run', 'watch']);
