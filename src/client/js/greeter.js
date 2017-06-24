@@ -13,7 +13,7 @@ class Greeter {
   }
 
   greet() {
-    alert(this.greeting);
+    console.log(this.greeting);
   }
 }
 
